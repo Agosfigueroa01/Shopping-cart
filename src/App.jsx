@@ -9,7 +9,11 @@ function App() {
 
   //State
   const [data, setData] = useState(db);
+  const [cart, setCart] = useState([]);
 
+  function addToCart() {
+    console.log(agregando...)
+  }
 
 
   return (
@@ -25,6 +29,7 @@ function App() {
               <Guitar 
                 key={guitar.id} //Key es un prop que hay que usar siempre que itere en una lista
                 guitar={guitar}
+                setCart={setCart}
               />
             ))}
         </div>
