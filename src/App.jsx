@@ -1,8 +1,16 @@
+import { useState, useEffect } from "react"
 import Header from "./components/Header"
 import Guitar from "./components/Guitar"
+import { db } from "./data/db";
+
 
 
 function App() {
+
+  //State
+  const [data, setData] = useState(db);
+
+
 
   return (
     <>
@@ -13,18 +21,12 @@ function App() {
         <h2 className="text-center">Nuestra Colección</h2>
 
         <div className="row mt-5">
-            <Guitar />
-            <Guitar />
-            <Guitar />
-            <Guitar />
-            <Guitar />
-            <Guitar />
-            <Guitar />
-            <Guitar />
-            <Guitar />
-            <Guitar />
-            <Guitar />
-            <Guitar />
+            {data.map((guitar) => (     //en vez de poner return (), pongo solo () y cumple la misma funcion
+              <Guitar 
+                key={guitar.id} //Key es un prop que hay que usar siempre que itere en una lista
+                guitar={guitar}
+              />
+            ))}
         </div>
     </main>
 
