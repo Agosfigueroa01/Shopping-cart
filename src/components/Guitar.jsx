@@ -1,6 +1,7 @@
-export default function Guitar({guitar, setCart}) {
+/* eslint-disable react/prop-types */
+export default function Guitar({guitar, addToCart}) {
 
-    const { id, name, image, description, price } = guitar
+    const { name, image, description, price } = guitar
 
 
 
@@ -16,7 +17,7 @@ export default function Guitar({guitar, setCart}) {
                 <button 
                     type="button"
                     className="btn btn-dark w-100"
-                    onClick={() => setCart(prevCart => [...prevCart, guitar])} //pasamos un callback para que no se mande a llmaar en automatico, sino que espera al evento
+                    onClick={() => addToCart(guitar)} //pasamos un callback para que no se mande a llmaar en automatico, sino que espera al evento
                 >Agregar al Carrito
                 </button>
             </div>
