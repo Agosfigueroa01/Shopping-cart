@@ -44,7 +44,7 @@ function App() {
 
   function decreaseQuantity(id){
     const updatedCart = cart.map(item => {
-      if(item.id === id && item.quantity > MIN_ITEMS){
+      if(item.id === id && item.quantity > MIN_ITEMS) {
         return{
           ...item,
           quantity: item.quantity - 1
@@ -60,9 +60,10 @@ function App() {
       if(item.id === id && item.quantity < MAX_ITEMS) {
         return {
           ...item,
-          quantity:item.quantity + 1
+          quantity: item.quantity + 1
         }
       }
+      return item
     })
     setCart(updatedCart)
   }

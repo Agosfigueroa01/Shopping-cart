@@ -5,7 +5,7 @@ import { useMemo } from "react"
 export default function Header ({cart, removeFromCart, decreaseQuantity, increaseQuantity, clearCart}) {
 
     const isEmpty = useMemo(() => cart.length === 0, [cart])
-    const cartTotal = useMemo(() => cart.reduce( (total, item) => total + (item.quantity * item.price), 0 ), [cart])
+    const cartTotal = useMemo(() => cart.reduce( (total, item) => total + (item.quantity * item.price), 0), [cart])
 
     return(
     
@@ -39,7 +39,7 @@ export default function Header ({cart, removeFromCart, decreaseQuantity, increas
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {cart.map( guitar => (
+                                    {cart.map(guitar => (
                                         <tr key={guitar.id}>
                                             <td>
                                                 <img 
