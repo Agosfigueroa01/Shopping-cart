@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { db } from "../data/db";
 
 
@@ -21,7 +21,7 @@ export const useCart = () => {
         localStorage.setItem('cart', JSON.stringify(cart))
       }, [cart])
     
-      function addToCart(item) {
+      const addToCart = useCallback(item => {
         const itemExists = cart.findIndex((guitar) => guitar.id === item.id)
         if (itemExists >= 0){
           if(cart[itemExists].quantity >= MAX_ITEMS) return
@@ -29,40 +29,46 @@ export const useCart = () => {
           updatedCart[itemExists].quantity++
           setCart(updatedCart)
         } else {
-          item.quantity = 1
-          setCart([...cart, item])
+          const newItem = {...item, quantity: 1}
+          setCart([...cart, newItem])
         }
-      }
+        }, [cart]
+        )
     
-      function removeFromCart(id){
-        setCart(prevCart => prevCart.filter(guitar => guitar.id !== id))
-      }
+      const removeFromCart = useCallback(id =>
+        {setCart(prevCart => prevCart.filter(guitar => guitar.id !== id))
+        }, [setCart]
+      )
     
-      function decreaseQuantity(id){
-        const updatedCart = cart.map(item => {
-          if(item.id === id && item.quantity > MIN_ITEMS) {
-            return{
-              ...item,
-              quantity: item.quantity - 1
-            }
-          }
-          return item
-        })
-        setCart(updatedCart)
-      }
+      const decreaseQuantity = useCallback(id =>
+        {
+            const updatedCart = cart.map(item => {
+              if(item.id === id && item.quantity > MIN_ITEMS) {
+                return{
+                  ...item,
+                  quantity: item.quantity - 1
+                }
+              }
+              return item
+            })
+            setCart(updatedCart)
+        }, [cart]
+      )
       
-      function increaseQuantity(id) {
-        const updatedCart = cart.map ( item => {
-          if(item.id === id && item.quantity < MAX_ITEMS) {
-            return {
-              ...item,
-              quantity: item.quantity + 1
-            }
-          }
-          return item
-        })
-        setCart(updatedCart)
-      }
+      const increaseQuantity = useCallback(id =>
+        {
+            const updatedCart = cart.map ( item => {
+              if(item.id === id && item.quantity < MAX_ITEMS) {
+                return {
+                  ...item,
+                  quantity: item.quantity + 1
+                }
+              }
+              return item
+            })
+            setCart(updatedCart)
+        }, [cart]
+      ) 
     
     
       function clearCart(){
