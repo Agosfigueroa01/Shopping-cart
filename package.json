@@ -2,6 +2,7 @@
   "name": "shopping-cart",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://Agosfigueroa01/Shopping-cart",
   "type": "module",
   "scripts": {
     "dev": "vite",
