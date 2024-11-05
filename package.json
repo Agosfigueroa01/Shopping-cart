@@ -1,6 +1,6 @@
 {
   "name": "shopping-cart",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "homepage": "https://Agosfigueroa01/Shopping-cart",
   "type": "module",
