@@ -1,8 +1,10 @@
-# React + Vite
+# Shopping Cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This Short website is build in JavaScript and React.
+The objective for this app is for the user to be able to look for some guitars, add them in the cart and see how much (the user) is going to spend in those items.
+It was created with the iniciative on learning hooks and custom hooks, along with logic and fixing issues in while creating it.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Observations: 
+- The user can add a Max of 5 guitars per model and a Min of 1.
+- The cart will add or subtract the prices of the guitars and the quantity of them to show the user a final price of what it should pay.
+- If the user reloads the page, the cart is maintained with the amount of products previously selected.
